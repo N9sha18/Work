@@ -209,7 +209,7 @@ else{
 int main(){
 
                                                                                                emp obj;
-cout<<"\n\n\t\tEmployee Management System"<<endl;
+cout<<"\n\n\t\tEmployee Management System By N&K"<<endl;
 
 	  string username,password;
 
