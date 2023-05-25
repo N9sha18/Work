@@ -1,368 +1,338 @@
 //Program for Employee Management System
 #include <iostream>
- #include <fstream>
-                                                                                            using namespace std;
-
-class emp{
-  public:
-                       string name,id,address;
-	                     int salary,contact;
-
-          int total=0; 
-		  emp e[100];
-
-void empdata(){
-	int user=0;
-	cout<<"How many employees data do you want to enter??"<<endl;
-	cin>>user;
-
-	for(int i=total;i<total+user;i++){
-
-		cout<<"Enter data of employee "<<i+1<<endl<<endl;
-		cout<<"Enter employee name: ";
-		cin>>e[i].name;
-		cout<<"Enter id: ";
-		cin>>e[i].id;
-		cout<<"Enter address: ";
-		cin>>e[i].address;
-		cout<<"Enter contact: ";
-		cin>>e[i].contact;
-		cout<<"Enter salary: ";
-		cin>>e[i].salary;
-
-	}
-	total=total+user;
-}
-
-void show(){
-	if(total!=0){
-
-	for(int i=0;i<total;i++){
-
-		cout<<"Data of employee "<<i+1<<endl;
-		cout<<"Name: "<<e[i].name<<endl;
-		cout<<"ID: "<<e[i].id<<endl;
-		cout<<"Address: "<<e[i].address<<endl;
-		cout<<"Contact: "<<e[i].contact<<endl;
-		cout<<"Salary: "<<e[i].salary<<endl;
-
-	}
-    }
-    else{
-    	cout<<"No data is entered"<<endl;
-	}
-
-}
-
-void search(){
-	if(total!=0){
-
-	string id;
-
-	cout<<"Enter id of employee which you want to search"<<endl;
-	cin>>id;
-
-	for(int i=0;i<total;i++){
-
-		if(e[i].id==id){
-
-		cout<<"Data of employee "<<i+1<<endl;
-		cout<<"Name: "<<e[i].name<<endl;
-		cout<<"ID: "<<e[i].id<<endl;
-		cout<<"Address: "<<e[i].address<<endl;
-		cout<<"Contact: "<<e[i].contact<<endl;
-		cout<<"Salary: "<<e[i].salary<<endl;
-		break;
-
-		}
-
-		if(i==total-1){
-
-                        			cout<<"No such record found"<<endl;
-
-		}
-
-	}
-
-}
-else{
-	cout<<"No data is entered"<<endl;
-}
-
-}
-
-void update(){
-	if(total!=0){
-
-	string id;
-
-	cout<<"Enter id of employee which you want to update"<<endl;
-	cin>>id;
-
-	for(int i=0;i<total;i++){
-
-		if(e[i].id==id){
-
-		cout<<"Old data of employee "<<i+1<<endl;
-		cout<<"Name: "<<e[i].name<<endl;
-		cout<<"ID: "<<e[i].id<<endl;
-		cout<<"Address: "<<e[i].address<<endl;
-		cout<<"Contact: "<<e[i].contact<<endl;
-		cout<<"Salary: "<<e[i].salary<<endl;
-		cout<<"\nEnter new data"<<endl;
-		cout<<"Enter employee name: ";
-		cin>>e[i].name;
-		cout<<"Enter id: ";
-		cin>>e[i].id;
-		cout<<"Enter address: ";
-		cin>>e[i].address;
-		cout<<"Enter contact: ";
-		cin>>e[i].contact;
-		cout<<"Enter salary: ";
-		cin>>e[i].salary;
-		break;
-		}
-
-		if(i==total-1){
-
-			cout<<"No such record found"<<endl;
-
-		}
-	}
-}
-else{
-
-	cout<<"No data is entered"<<endl;
-}
-}
-
-void del(){
-	if(total!=0){
-
-	int press;
-
-	cout<<"Press 1 to delete specific record"<<endl;
-	cout<<"Press 2 to delete full record"<<endl;
-	cin>>press;
-
-	if(press==1){
-
-		string id;
-
-		cout<<"Enter id of employee which you want to delete"<<endl;
-		cin>>id;
-
-		for(int i=0;i<total;i++){
-
-			if(e[i].id==id){
-
-				e[i].name=e[i+1].name;
-
-				e[i].id=e[i+1].id;
-
-				e[i].address=e[i+1].address;
-
-				e[i].contact=e[i+1].contact;
-
-				e[i].salary=e[i+1].salary;
-
-				total--;
-
-				cout<<"Your required record is deleted"<<endl;
-
-				break;
-
-			}
-
-			if(i==total-1){
-
-			cout<<"No such record found"<<endl;
-
-		}
-
-		}
-
-	}
-
-	else if(press==2){
-
-		total=0;
-
-		cout<<"All record is deleted"<<endl;
-
-	}
-
-	else{
-
-		cout<<"Invalid Input"<<endl;
-
-	}
-}
-else{
-
-	cout<<"No data is entered"<<endl;
-
-}
-}
+#include <cstdlib>
+#include <conio.h>
+#include <cstring>
+#include <cstdio>
+#include <unistd.h>
+#include <ios>
+#include <limits>
+using namespace std;
+
+class Person{//this class have required variables 
+protected:
+
+char name[30];
+    char id[5];
+    char designation[10];
+    int age;
+    int ctc;
+    int experience;
 };
 
-int main(){
-
-                                                                                               emp obj;
-cout<<"\n\n\t\tEmployee Management System By N&K"<<endl;
-
-	  string username,password;
-
-    cout<<"\n\n\n\t\t******Signup******"<<endl;
-
-	cout<<"\t\tEnter new username: ";
-
-	cin>>username;
-
-	cout<<"\t\tEnter new password: ";
-
-	cin>>password;
-
-	cout<<"\t\tYour new id is creating please wait";
-
-	for(int i=0;i<6;i++)
-
-	{
-
-		cout<<".";
-
-	}
-
-	cout<<"\n\t\tYour id created successfully";
-
-
-	start:
-
-	system("CLS");
-
-	string usrn,pswd;
-
-	cout<<"\n\n\t\tEmployee Management System"<<endl;
-
-	cout<<"\n\n\n\t\t   LOGIN"<<endl;
-
-	cout<<"\t\tEnter username: ";
-
-	cin>>usrn;
-
-	cout<<"\t\tEnter password: ";
-
-	cin>>pswd;
-
-	if(usrn==username&&pswd==password)
-
-	{
-
-	system("CLS");
-
-	char ch;
-
-	while(1){
-
-	cout<<"\n\nPress 1 to enter data"<<endl;
-
-	cout<<"Press 2 to show data"<<endl;
-
-	cout<<"Press 3 to search data"<<endl;
-
-	cout<<"Press 4 to update data"<<endl;
-
-	cout<<"Press 5 to delete data"<<endl;
-
-	cout<<"Press 6 to logout"<<endl;
-
-	cout<<"Press 7 to exit"<<endl;
-
-	system("CLS");
-
-	switch(ch){
-
-		case '1':
-
-			obj.empdata();
-
-			break;
-
-		case '2':
-
-			obj.show();
-
-			break;
-
-		case '3':
-
-			obj.search();
-
-			break;
-
-		case '4':
-
-			obj.update();
-
-			break;
-
-		case '5':
-
-			obj.del();
-
-			break;
-
-		case '6':
-
-			goto start;
-
-			break;
-
-		case '7':
-
-			exit(0);
-
-			break;
-
-		default:
-
-			cout<<"\aInvalid Input"<<endl;
-
-			break;
-
-	}
-
-}
-
-}
-
-  else if(usrn!=username)
-
-  {
-
-  	cout<<"\t\t\aInvalid username please try again";
-
-  	goto start;
-
-  }
-
-  else if(pswd!=password)
-
-  {
-
-  	cout<<"\t\t\aInvalid password please try again";
-
-
-  	goto start;
-
-  }
-
-  else{
-
-  	cout<<"\t\t\aInvalid username and password";
-
-  	goto start;
-
-  }
+class reqfunctions : protected Person
+
+{//this class have required functions
+
+protected:
+
+    void waitForEnter()
+    {
+        cout << "\n\n\n Press enter to go back \n\n";
+        cin.get();
+        cin.get();
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////
+
+    void listEmployees()
+    {
+        system("cls");
+      
+        FILE *file;
+        file = fopen("data.txt", "r");
+        cout << "\n\t      List of Employees\n";
+        cout << "\n----------------------------------------------";
+        cout << "\n NAME        |     ID     |     DESIGNATION\n";
+        cout << "----------------------------------------------";
+
+        while (fscanf(file, "%s %s %s %d %d %d", &name[0], &id[0], &designation[0], &age, &ctc, &experience) != EOF)
+            cout << "\n"
+                 << name << "\t\t" << id << "\t\t" << designation;
+        fclose(file);
+        waitForEnter();
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////
+
+    void showDetails()
+    {
+        system("cls");
+       
+        FILE *file;
+        char checkId[5];
+        cout << "\n\nEnter Employee ID: ";
+        cin >> checkId;
+        file = fopen("data.txt", "r");
+        while (fscanf(file, "%s %s %s %d %d %d", &name[0], &id[0], &designation[0], &age, &ctc, &experience) != EOF)
+            if (strcmp(checkId, id) == 0)
+            {
+                cout << "\n---------------------";
+                cout << "\nName: " << name;
+                cout << "\n---------------------";
+                cout << "\nId: " << id;
+                cout << "\n---------------------";
+                cout << "\nDesignation: " << designation;
+                cout << "\n---------------------";
+                cout << "\nAge: " << age;
+                cout << "\n---------------------";
+                cout << "\nCTC: " << ctc;
+                cout << "\n---------------------";
+                cout << "\nExperience: " << experience;
+                cout << "\n---------------------";
+            }
+        fclose(file);
+        waitForEnter();
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////
+
+    void editExisting()
+    {
+        system("cls");
+       
+        char checkId[5];
+        cout << "\nEnter employee id: ";
+        cin >> checkId;
+        char newDesignation[10];
+        cout << "\n-----------------------------";
+        cout << "\nEnter new designation: ";
+        cin >> newDesignation;
+        int newCtc;
+        cout << "------------------------------";
+        cout << "\nEnter new CTC: ";
+        cin >> newCtc;
+        FILE *file, *tempfile;
+        file = fopen("data.txt", "r");
+        tempfile = fopen("temp.txt", "w");
+        while (fscanf(file, "%s %s %s %d %d %d", &name[0], &id[0], &designation[0], &age, &ctc, &experience) != EOF)
+        {
+            if (strcmp(checkId, id) == 0)
+                fprintf(tempfile, "%s %s %s %d %d %d \n", name, id, newDesignation, age, newCtc, experience);
+            else
+                fprintf(tempfile, "%s %s %s %d %d %d \n", name, id, designation, age, ctc, experience);
+        }
+        fclose(file);
+        fclose(tempfile);
+        int isRemoved = remove("data.txt");
+        int isRenamed = rename("temp.txt", "data.txt");
+        waitForEnter();
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    void addNewEmployee()
+    { // adding records
+        system("cls");
+       
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "\n----------------------------------------";
+        cout << "\n Enter First Name of Employee: ";
+        cin >> name;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "\n----------------------------------------";
+        cout << "\n Enter Employee ID [max 4 digits]: ";
+        cin >> id;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "\n----------------------------------------";
+        cout << "\n Enter Designation: ";
+        cin >> designation;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "\n----------------------------------------";
+        cout << "\n Enter Employee Age: ";
+        cin >> age;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "\n----------------------------------------";
+        cout << "\n Enter Employee CTC: ";
+        cin >> ctc;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "\n----------------------------------------";
+        cout << "\n Enter Employee Experience: ";
+        cin >> experience;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "\n----------------------------------------";
+
+        char ch;
+        cout << "\nEnter 'y' to save above information\n";
+        cin >> ch;
+        if (ch == 'y')
+        {
+            FILE *file;
+            file = fopen("data.txt", "a");
+            fprintf(file, "%s %s %s %d %d %d \n", name, id, designation, age, ctc, experience);
+            fclose(file);
+            cout << "\nNew Employee has been added to database\n";
+        }
+        else
+            addNewEmployee();
+        waitForEnter();
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    void deleteEmployeeDetails()
+    { // removing records
+        system("cls");
+       
+        char checkId[5];
+        cout << "\n----------------------------------";
+        cout << "\nEnter Employee Id To Remove: ";
+        cin >> checkId;
+        char ch;
+        cout << "----------------------------------";
+        cout << "\n\n\n\n\nCONFIRMATION\nEnter 'y' To Confirm Deletion \n";
+        cin >> ch;
+        if (ch == 'y')
+        {
+            FILE *file, *tempfile;
+            file = fopen("data.txt", "r");
+            tempfile = fopen("temp.txt", "w");
+            while (fscanf(file, "%s %s %s %d %d %d", &name[0], &id[0], &designation[0], &age, &ctc, &experience) != EOF)
+                if (strcmp(checkId, id) != 0)
+                    fprintf(tempfile, "%s %s %s %d %d %d \n", name, id, designation, age, ctc, experience);
+            fclose(file);
+            fclose(tempfile);
+            int isRemoved = remove("data.txt");
+            int isRenamed = rename("temp.txt", "data.txt");
+            cout << "\nRemoved Successfully\n";
+            waitForEnter();
+        }
+        else
+            deleteEmployeeDetails();
+    }
+    /////////////////////////////////////////////////////////////////////////////////
+
+    void options()
+    {
+
+        while (true)
+        {
+            system("cls");
+           
+
+            cout << "\n\t\t\t>>>>>>>>>  EMPLOYEE MANAGEMENT SYSTEM BY N&K <<<<<<<<<";
+            cout << "\n";
+            cout << "\n\t\t\t------------------------------------------------";
+            cout << "\n\t\t\tENTER   1:   To View List of Employees";
+            cout << "\n\t\t\t------------------------------------------------";
+            cout << "\n\t\t\tENTER   2:   To View Employee Details";
+            cout << "\n\t\t\t------------------------------------------------";
+            cout << "\n\t\t\tENTER   3:   To Modify Existing Employee Details";
+            cout << "\n\t\t\t------------------------------------------------";
+            cout << "\n\t\t\tENTER   4:   To Add New Employee Details";
+            cout << "\n\t\t\t------------------------------------------------";
+            cout << "\n\t\t\tENTER   5:   To Remove an Employee Details";
+            cout << "\n\t\t\t------------------------------------------------";
+            cout << "\n\t\t\tENTER   0:   To Exit     ";
+            cout << "\n\t\t\t------------------------------------------------";
+            cout << "\n\n\t\t\t   Please Enter Your Choice: ";
+
+            int choice;
+            cin >> choice;
+
+            switch (choice)
+            {
+                ////////////////////////////////////////////////////////////////
+            case 0:
+                system("CLS");
+
+                cout << "\n\n///////////////////////////////// By Nishant & Karan ////////////////////////////////////////\n\n ";
+                return;
+                ///////////////////////////////////////////////////////////////
+            case 1:
+                listEmployees();
+                break;
+                //////////////////////////////////////////////////////////////
+            case 2:
+                showDetails();
+                break;
+                ////////////////////////////////////////////////////////////
+            case 3:
+                editExisting();
+                break;
+                ///////////////////////////////////////////////////////////
+            case 4:
+                addNewEmployee();
+                break;
+                /////////////////////////////////////////////////////////
+            case 5:
+                deleteEmployeeDetails();
+                break;
+                //////////////////////////////////////////////////////////
+            default:
+                cout << "\n Sorry! I don't understand that! \n";
+                break;
+            }
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+};
+
+class Access : protected reqfunctions 
+
+{//This class is used to get Access
+
+public:
+ 
+    void login()
+    {
+        string pass = "";
+        char ch;
+        cout << "\n\n\n\n\t\t\t\t\tEMPLOYEE MANAGEMENT SYSTEM";
+        cout << "\n\n\n\n\n\t\t\t\t\tEnter Your Password :";
+        ch = _getch();
+        while (ch != 13)
+        { // character 13 is enter
+            pass.push_back(ch);
+            cout << '*';
+            ch = _getch();
+        }
+
+        if (pass == "nishant123")
+        {
+            cout << "\n\n\n\t\t\t\t\tLOADING \n\t\t\t\t\t";
+            for (int a = 1; a < 8; a++)
+            {
+                cout << "...";
+            }
+            system("CLS");
+           
+            cout << "\n\n\n\t\t\t\t\tAccess Granted!! \n\n\n";
+
+            system("PAUSE");
+            system("CLS");
+            
+            options();
+        }
+
+        else
+        {
+            cout << "\nAccess Aborted...\n";
+            login();
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////
+
+};
+
+int main()
+
+{
+
+    Access obj;
+    obj.login();
+    return 0;
 
 }
