@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class Person{//this class have required variables 
+class ReqVariables{//this class have required variables 
 protected:
 
 char name[30];
@@ -23,7 +23,7 @@ char name[30];
     int experience;
 };
 
-class reqfunctions : protected Person
+class Reqfunctions : protected ReqVariables
 
 {//this class have required functions
 
@@ -309,6 +309,29 @@ void editExisting() {
     else
         options();
 }
+/////////////////////////////////////////////////////////////////////////////////
+
+void loadingScreen() {
+    for (int i = 0; i <= 1; i++) {
+        system("cls");
+        cout << "Loading.";
+        sleep(1);
+        system("cls");
+
+        cout << "Loading..";
+        sleep(1);
+        system("cls");
+
+        cout << "Loading...";
+        sleep(1);
+        system("cls");
+
+        cout << "Loading....";
+        sleep(1);
+        system("cls");
+
+    }
+}
 
     /////////////////////////////////////////////////////////////////////////////////
 
@@ -361,22 +384,27 @@ void options()
                 return;
             ///////////////////////////////////////////////////////////////
             case 1:
+            loadingScreen();
                 listEmployees();
                 break;
             //////////////////////////////////////////////////////////////
             case 2:
+            loadingScreen();
                 showDetails();
                 break;
             ////////////////////////////////////////////////////////////
             case 3:
+            loadingScreen();
                 editExisting();
                 break;
             ///////////////////////////////////////////////////////////
             case 4:
+            loadingScreen();
                 addNewEmployee();
                 break;
             /////////////////////////////////////////////////////////
             case 5:
+            loadingScreen();
                 deleteEmployeeDetails();
                 break;
             //////////////////////////////////////////////////////////
@@ -391,7 +419,7 @@ void options()
 
 };
 
-class Access : protected reqfunctions 
+class Access : protected Reqfunctions
 
 {//This class is used to get Access
 
@@ -424,7 +452,7 @@ public:
 
             system("PAUSE");
             system("CLS");
-            
+            loadingScreen();
             options();
         }
 
