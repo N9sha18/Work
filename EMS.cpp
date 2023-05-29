@@ -427,6 +427,7 @@ public:
  
     void login()
     {
+    system("cls");
         string pass = "";
         char ch;
         cout << "\n\n\n\n\t\t\t\t\tEMPLOYEE MANAGEMENT SYSTEM";
