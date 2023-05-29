@@ -314,19 +314,15 @@ void editExisting() {
 void loadingScreen() {
     for (int i = 0; i <= 1; i++) {
         system("cls");
-        cout << "Loading.";
+        cout << "Loading.....";
         sleep(1);
         system("cls");
 
-        cout << "Loading..";
+        cout << "Loading......";
         sleep(1);
         system("cls");
 
-        cout << "Loading...";
-        sleep(1);
-        system("cls");
-
-        cout << "Loading....";
+        cout << "Loading........";
         sleep(1);
         system("cls");
 
