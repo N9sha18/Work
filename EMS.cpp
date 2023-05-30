@@ -29,7 +29,7 @@ class Reqfunctions : protected ReqVariables
 
 protected:
 
-    void waitForEnter()
+    void UserEnter()
     {
         cout << "\n\n\n Press enter to go back \n\n";
         cin.get();
@@ -38,7 +38,7 @@ protected:
 
     /////////////////////////////////////////////////////////////////////////////////////
 
-    void listEmployees()
+    void ShowEmployee()
     {
         system("cls");
       
@@ -53,12 +53,12 @@ protected:
             cout << "\n"
                  << name << "\t\t" << id << "\t\t" << designation;
         fclose(file);
-        waitForEnter();
+        UserEnter();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////
 
-    void showDetails()
+    void EmployDetails()
 {
     system("cls");
 
@@ -67,7 +67,7 @@ protected:
     cout << "\n\nEnter Employee ID: ";
     cin >> checkId;
 
-    // Validate employee id
+    // for the validation of employee id
     while (strlen(checkId) != 4)
     {
         cout << "Invalid employee id. Please enter a 4-character id: ";
@@ -108,32 +108,32 @@ protected:
     }
 
     fclose(file);
-    waitForEnter();
+    UserEnter();
 }
 
     ////////////////////////////////////////////////////////////////////////////////////
 
    
-void editExisting() {
+void EditEmployee() {
   system("cls");
 
-  char checkId[5]; // Increase size to accommodate null character
+  char checkId[5]; 
   std::cout << "\nEnter employee id: ";
   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear any remaining newline characters
   std::cin.getline(checkId, 5);
 
-  // Validate employee id
+  // for the Validation of employee id
   while (strlen(checkId) != 4) {
     std::cout << "Invalid employee id. Please enter a 4-character id: ";
     std::cin.getline(checkId, 5);
   }
 
-  char newDesignation[11]; // Increase size to accommodate null character
+  char newDesignation[11]; 
   std::cout << "\n-----------------------------";
   std::cout << "\nEnter new designation: ";
   std::cin.getline(newDesignation, 11);
 
-  // Validate new designation
+  // for the Validation of new designation
   while (strlen(newDesignation) > 10) {
     std::cout << "Invalid designation. Please enter a designation up to 10 characters long: ";
     std::cin.getline(newDesignation, 11);
@@ -168,13 +168,13 @@ void editExisting() {
 
   int isRemoved = remove("data.txt");
   int isRenamed = rename("temp.txt", "data.txt");
-  waitForEnter();
+  UserEnter();
 }
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    void addNewEmployee()
+    void AddEmployee()
 {
     system("cls");
 
@@ -184,7 +184,7 @@ void editExisting() {
     cout << "\n Enter First Name of Employee: ";
     cin.getline(name, 100);
 
-    // Validate name
+    // for the Validation of name
     while (strlen(name) == 0) {
         cout << "Invalid name. Please enter a valid name: ";
         cin.getline(name, 100);
@@ -255,13 +255,13 @@ void editExisting() {
     }
     else
         options();
-    waitForEnter();
+    UserEnter();
 }
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   void deleteEmployeeDetails()
+   void DeleteEmployee()
 {
     system("cls");
 
@@ -270,7 +270,7 @@ void editExisting() {
     cout << "\nEnter Employee Id To Remove: ";
     cin >> checkId;
 
-    // Validate employee id
+    // for the Validation of employee id
     while (strlen(checkId) != 4)
     {
         cout << "Invalid employee id. Please enter a 4-character id: ";
@@ -304,7 +304,7 @@ void editExisting() {
         int isRenamed = rename("temp.txt", "data.txt");
 
         cout << "\nRemoved Successfully\n";
-        waitForEnter();
+        UserEnter();
     }
     else
         options();
@@ -337,7 +337,7 @@ void options()
     {
         system("cls");
 
-        // Get the current time
+        // function time
         std::time_t currentTime = std::time(0);
         char* timeStr = std::ctime(&currentTime);
 
@@ -364,7 +364,7 @@ void options()
         int choice;
         std::cin >> choice;
 
-        // Validate the choice
+        // for the Validation of the choice
         while (choice < 0 || choice > 5)
         {
             std::cout << "Invalid choice. Please enter a valid option: ";
@@ -381,27 +381,27 @@ void options()
             ///////////////////////////////////////////////////////////////
             case 1:
             loadingScreen();
-                listEmployees();
+                ShowEmployee();
                 break;
             //////////////////////////////////////////////////////////////
             case 2:
             loadingScreen();
-                showDetails();
+                EmployDetails();
                 break;
             ////////////////////////////////////////////////////////////
             case 3:
             loadingScreen();
-                editExisting();
+                EditEmployee();
                 break;
             ///////////////////////////////////////////////////////////
             case 4:
             loadingScreen();
-                addNewEmployee();
+                AddEmployee();
                 break;
             /////////////////////////////////////////////////////////
             case 5:
             loadingScreen();
-                deleteEmployeeDetails();
+                DeleteEmployee();
                 break;
             //////////////////////////////////////////////////////////
             default:
